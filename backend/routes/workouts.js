@@ -1,32 +1,25 @@
 const express = require('express')
 const {
-  createWorkout,
-  getWorkouts,
+  //getMuscleGroups,
+  getExercises,
   getWorkout,
-  deleteWorkout,
-  updateWorkout
+  
 } = require('../controllers/workoutController')
 const requireAuth = require('../middleware/requireAuth')
+const favoritesController = require('../controllers/favoritesController');
 
 const router = express.Router()
 
-// require auth for all workout routes
-router.use(requireAuth)
+// GET all exercises for a muscle group
+router.get('/exercises/:muscle', getExercises)
 
-// GET all workouts
-router.get('/', getWorkouts)
+// GET a single exercise
+router.get('/exercise/:name', getWorkout)
 
-//GET a single workout
-router.get('/:id', getWorkout)
+// Route to retrieve favorited exercises
+router.get('/favorites/workouts', favoritesController.getFavoriteExercises);
 
-// POST a new workout
-router.post('/', createWorkout)
-
-// DELETE a workout
-router.delete('/:id', deleteWorkout)
-
-// UPDATE a workout
-router.patch('/:id', updateWorkout)
-
+// Route to save a workout as favorite
+router.post('/exercises/save', favoritesController.saveFavoriteExercise); //:exerciseName
 
 module.exports = router

@@ -1,10 +1,10 @@
 import { useAuthContext } from './useAuthContext'
-import { useWorkoutsContext } from './useWorkoutsContext'
+import { useExercisesContext, useWorkoutsContext } from './useExercisesContext'
 import { useWeathersContext } from './useWeathersContext'
 
 export const useLogout = () => {
   const { dispatch } = useAuthContext()
-  const { dispatch: dispatchWorkouts } = useWorkoutsContext()
+  const { dispatch: dispatchWorkouts } = useExercisesContext()
   const { dispatch: dispatchWeathers } = useWeathersContext()
 
   const logout = () => {

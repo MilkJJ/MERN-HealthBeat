@@ -3,17 +3,33 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const workoutSchema = new Schema({
-  title: {
+  name: {
     type: String,
     required: true
   },
-  reps: {
-    type: Number,
+  type: {
+    type: String,
     required: true
   },
-  load: {
-    type: Number,
+  muscle: {
+    type: String,
     required: true
+  },
+  equipment: {
+    type: String,
+    required: true
+  },
+  difficulty: {
+    type: String,
+    required: true
+  },
+  instructions: {
+    type: String,
+    required: true
+  },
+  favorite: {
+    type: Boolean,
+    required: false
   },
   user_id: {
     type: String,

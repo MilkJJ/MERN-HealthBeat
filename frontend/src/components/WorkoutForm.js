@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
+import { useExercisesContext } from "../hooks/useExercisesContext"
 import { useAuthContext } from '../hooks/useAuthContext'
 
 const WorkoutForm = () => {
-  const { dispatch } = useWorkoutsContext()
+  const { dispatch } = useExercisesContext()
   const { user } = useAuthContext()
 
   const [title, setTitle] = useState('')

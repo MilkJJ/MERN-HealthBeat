@@ -1,103 +1,50 @@
 const Workout = require('../models/workoutModel')
 const mongoose = require('mongoose')
+const axios = require('axios');
+const API_KEY = 'bnti68Sbl82CWFtDBJVrMw==Xokfq027Qo5EKy4P';
 
 // get all workouts
-const getWorkouts = async (req, res) => {
-  const user_id = req.user._id
+const getExercises = async (req, res) => {
+  const muscle = req.params.muscle;
+  const url = `https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`;
 
-  const workouts = await Workout.find({user_id}).sort({createdAt: -1})
-
-  res.status(200).json(workouts)
+  try {
+    const response = await axios.get(url, { headers: { 'X-Api-Key': API_KEY } });
+    res.status(200).json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while fetching the exercises.' });
+  }
 }
 
 // get a single workout
 const getWorkout = async (req, res) => {
-  const { id } = req.params
+  const name = decodeURIComponent(req.params.name);
+  const apiNinja = `https://api.api-ninjas.com/v1/exercises?name=${name}`;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({error: 'No such workout'})
-  }
-
-  const workout = await Workout.findById(id)
-
-  if (!workout) {
-    return res.status(404).json({error: 'No such workout'})
-  }
-  
-  res.status(200).json(workout)
-}
-
-
-// create new workout
-const createWorkout = async (req, res) => {
-  const {title, load, reps} = req.body
-
-  let emptyFields = []
-
-  if(!title) {
-    emptyFields.push('title')
-  }
-  if(!load) {
-    emptyFields.push('load')
-  }
-  if(!reps) {
-    emptyFields.push('reps')
-  }
-  if(emptyFields.length > 0) {
-    return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
-  }
-
-  // add doc to db
   try {
-    const user_id = req.user._id
-    const workout = await Workout.create({title, load, reps, user_id})
-    res.status(200).json(workout)
+    const response = await axios.get(apiNinja, { headers: { 'X-Api-Key': API_KEY } });
+    const exercise = response.data.find(exercise => exercise.name === name);
+
+    if (!exercise) {
+      console.log(`Exercise not found: ${name}`);
+      console.log('Available exercises:', response.data.map(e => e.name));
+      res.status(404).send("Exercise not found. :(");
+      return;
+    }
+
+    res.status(200).json(exercise);
   } catch (error) {
-    res.status(400).json({error: error.message})
+    console.error('Error:', error);
+    res.status(500).send('An error occurred while fetching the exercise.');
   }
-}
-
-// delete a workout
-const deleteWorkout = async (req, res) => {
-  const { id } = req.params
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({error: 'No such workout'})
-  }
-
-  const workout = await Workout.findOneAndDelete({_id: id})
-
-  if (!workout) {
-    return res.status(400).json({error: 'No such workout'})
-  }
-
-  res.status(200).json(workout)
-}
-
-// update a workout
-const updateWorkout = async (req, res) => {
-  const { id } = req.params
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({error: 'No such workout'})
-  }
-
-  const workout = await Workout.findOneAndUpdate({_id: id}, {
-    ...req.body
-  })
-
-  if (!workout) {
-    return res.status(400).json({error: 'No such workout'})
-  }
-
-  res.status(200).json(workout)
-}
+};
 
 
 module.exports = {
-  getWorkouts,
+  //getMuscleGroups,
+  getExercises,
   getWorkout,
-  createWorkout,
-  deleteWorkout,
-  updateWorkout
+  // createWorkout,
+  // deleteWorkout,
+  // updateWorkout
 }
