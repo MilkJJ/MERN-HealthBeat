@@ -28,9 +28,20 @@ const WeatherDetails = ({ weather }) => {
 
   return (
     <div className="weather-details">
-      <h4>{weather.title}</h4>
-      <p><strong>Load (kg): </strong>{weather.load}</p>
-      <p><strong>Reps: </strong>{weather.reps}</p>
+      <img src="http://openweathermap.org/img/wn/10d@4x.png" alt="Weather description"/>
+      <h4>Latitude {weather.latitude} ‎ ‎ ‎  | ‎ ‎ ‎ Longitude {weather.longitude}</h4>
+      <p><strong>Cloud PCT: </strong>{weather.cloud_pct} %</p>
+      <p><strong>Temperature: </strong>{weather.temp} °C</p>
+      <p><strong>Feels Like: </strong>{weather.feels_like} °C</p>
+      <p><strong>Humidity: </strong>{weather.humidity} %</p>
+      <p><strong>Min Temp: </strong>{weather.min_temp} °C</p>
+      <p><strong>Max Temp: </strong>{weather.max_temp} °C</p>
+      <p><strong>Wind Speed: </strong>{weather.wind_speed} m/s</p>
+      <p><strong>Wind Degrees: </strong>{weather.wind_degrees} °</p>
+      <p><strong>Sunrise: </strong>{weather.sunrise} UNIX </p>
+      <p><strong>Sunset: </strong>{weather.sunset} UNIX </p>
+      <br></br>
+      <p>Date: {weather.createdAt}</p>
       <p>{formatDistanceToNow(new Date(weather.createdAt), { addSuffix: true })}</p>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
     </div>

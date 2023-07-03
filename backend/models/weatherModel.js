@@ -3,43 +3,55 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const weatherSchema = new Schema({
+  latitude: {
+    type: String,
+    required: false
+  },
+  longitude: {
+    type: String,
+    required: false
+  },
   cloud_pct: {
     type: String,
-    required: true
+    required: false
   },
   temp: {
     type: Number,
-    required: true
+    required: false
   },
   feels_like: {
     type: Number,
-    required: true
+    required: false
   },
   humidity: {
     type: String,
-    required: true
+    required: false
   },
   min_temp: {
     type: String,
-    required: true
+    required: false
   },
   max_temp: {
     type: Number,
-    required: true
+    required: false
   },
   wind_speed: {
     type: Number,
-    required: true
+    required: false
   },
   wind_degrees: {
     type: String,
-    required: true
+    required: false
   },
   sunrise: {
     type: Number,
-    required: true
+    required: false
   },
   sunset: {
+    type: String,
+    required: false
+  }, 
+  user_id: {
     type: String,
     required: true
   }

@@ -23,15 +23,15 @@ function App() {
             />
             <Route 
               path="/weather" 
-              element={user ? <Weather /> : <Navigate to="/weather" />} 
+              element={user ? <Weather /> : <Navigate to="/login" />} 
             />
             <Route 
               path="/login" 
-              element={!user ? <Login /> : <Navigate to="/" />} 
+              element={!user ? <Login /> : <Navigate to="/weather" />} 
             />
             <Route 
               path="/signup" 
-              element={!user ? <Signup /> : <Navigate to="/" />} 
+              element={!user ? <Signup /> : <Navigate to="/weather" />} 
             />
           </Routes>
         </div>

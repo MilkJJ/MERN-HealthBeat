@@ -6,7 +6,7 @@ import { useAuthContext } from "../hooks/useAuthContext"
 import WeatherDetails from '../components/WeatherDetails'
 import WeatherForm from '../components/WeatherForm'
 
-const Home = () => {
+const Weather = () => {
   const {weathers, dispatch} = useWeathersContext()
   const {user} = useAuthContext()
 
@@ -39,4 +39,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Weather
