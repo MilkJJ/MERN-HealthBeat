@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
@@ -14,9 +15,32 @@ const Navbar = () => {
     <header>
       <div className="container">
         <Link to="/">
-          <h1>Workout Buddy</h1>
+          <h2>HealthBeat: Fitness & Wellness</h2>
         </Link>
-        <nav>
+        
+          <nav>
+        {user && (
+            <div>
+              <Link to="/">Workout</Link>
+            </div>
+          )}
+        {user && (
+            <div>
+              <a class="nav-link" href="/weather">Weather</a>
+            </div>
+          )}
+          {user && (
+            <div>
+              <a class="nav-link" href="/">Music</a>
+            </div>
+          )}
+          {user && (
+            <div>
+              <a class="nav-link" href="/">Recipe</a>
+            </div>
+          )}
+          </nav>
+          <nav>
           {user && (
             <div>
               <span>{user.email}</span>
