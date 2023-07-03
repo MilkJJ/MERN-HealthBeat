@@ -79,7 +79,7 @@ header a {
 .weather-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
-  color: var(--primary);
+  color: rgb(47, 126, 246);
 }
 .weather-details p {
   margin: 0;
@@ -111,7 +111,7 @@ input {
   box-sizing: border-box;
 }
 form button {
-  background: var(--primary);
+  background: rgb(47, 126, 246);
   border: 0;
   color: #fff;
   padding: 10px;
