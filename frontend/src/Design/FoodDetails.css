@@ -1,0 +1,80 @@
+.fav-button {
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: lightgreen;
+    color: black;
+    border: none;
+}
+
+.fav-button:hover {
+    background-color: rgb(116, 228, 116);
+}
+
+.food-details {
+    margin-top: 20px;
+  }
+  
+  .food-card {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .food-info {
+    flex: 1;
+  }
+  
+  .food-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .food-image img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .caption {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .ingredients-table {
+    width: 100%;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  .link-style {
+    text-decoration: none;
+    color: #0000ff;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .link-style:hover {
+    color: #ff0000;
+  }
+  
+  

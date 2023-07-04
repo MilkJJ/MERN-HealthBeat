@@ -13,6 +13,8 @@ import MuscleGroups from './pages/MuscleGroups'
 import ExerciseDetails from './components/ExerciseDetails';
 import FavoriteWorkouts from './components/FavoriteWorkouts';
 import Favorites from './pages/Favorites';
+import SearchFood from './pages/SearchFood';
+import FoodDetails from './components/FoodDetails';
 
 function App() {
   const { user } = useAuthContext()
@@ -51,6 +53,11 @@ function App() {
               path="/favorites"
               element={user ? <Favorites /> : <Navigate to="/login" />}
             />
+            <Route
+              path="/food"
+              element={user ? <SearchFood /> : <Navigate to="/food" />}
+            />
+            <Route path="/food/:id" element={<FoodDetails />} />
           </Routes>
         </div>
       </BrowserRouter>
