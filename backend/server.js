@@ -64,6 +64,36 @@ mongoose.connect(process.env.MONGO_URI)
 // Kavi's
 app.use('/api', addToFavouritesRouter);
 
+
+// Darshy's Song API.
+
+// Define a schema for the song
+const songSchema = new mongoose.Schema({
+  name: String,
+  artist: String,
+  album: String,
+});
+
+//song api
+app.post('/api/songs', (req, res) => {
+  const { name, artist, email } = req.body;
+
+  // Create a new song document
+  const song = new Song({ name, artist, email });
+
+  // Save the song to the database
+  song.save((err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Failed to save song to the database' });
+    } else {
+      res.status(200).json({ message: 'Song saved successfully' });
+    }
+  });
+});
+
+const Song = mongoose.model('Song', songSchema);
+
 // Start the server
 app.listen(3000, () => {
   console.log('Server is running on port 3000');

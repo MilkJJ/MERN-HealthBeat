@@ -11,7 +11,6 @@ const FoodDetails = () => {
   const [foodDetails, setFoodDetails] = useState(null);
   const { user } = useContext(AuthContext);
 
-
   useEffect(() => {
     const fetchFoodDetails = async () => {
       try {

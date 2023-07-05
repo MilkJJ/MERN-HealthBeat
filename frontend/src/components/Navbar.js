@@ -31,7 +31,7 @@ const Navbar = () => {
           )}
           {user && (
             <div>
-              <a class="nav-link" href="/">Music</a>
+              <a class="nav-link" href="/music">Music</a>
             </div>
           )}
           {user && (

@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .dropdownmenu {
+    width: 800px;
+    display: flex;
+  }
+  
+  .select-menu {
+    flex: 1;
+  }
+  
+  .search-button {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .playlist-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  

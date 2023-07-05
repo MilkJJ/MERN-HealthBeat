@@ -15,6 +15,7 @@ import FavoriteWorkouts from './components/FavoriteWorkouts';
 import Favorites from './pages/Favorites';
 import SearchFood from './pages/SearchFood';
 import FoodDetails from './components/FoodDetails';
+import Music from './pages/Music';
 
 function App() {
   const { user } = useAuthContext()
@@ -56,6 +57,10 @@ function App() {
             <Route
               path="/food"
               element={user ? <SearchFood /> : <Navigate to="/food" />}
+            />
+            <Route
+              path="/music"
+              element={user ? <Music /> : <Navigate to="/music" />}
             />
             <Route path="/food/:id" element={<FoodDetails />} />
           </Routes>
