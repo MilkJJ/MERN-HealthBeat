@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import FavoriteWorkouts from '../components/FavoriteWorkouts';
+import FavoriteFoods from '../components/FavoriteFoods';
+import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 const Favorites = () => {
+  const { user } = useContext(AuthContext);
   const [selectedSection, setSelectedSection] = useState('workouts');
+  const [favoriteFoods, setFavoriteFoods] = useState([]);
 
   const handleSectionChange = (section) => {
     setSelectedSection(section);
   };
 
+  ;
+
   return (
   <div>
+
     <h1 style={{ fontSize: '50px', textAlign: 'center' }}>Favorites</h1>
     <div style={{ textAlign: 'center' }}>
       <div className="sections">
@@ -28,21 +36,23 @@ const Favorites = () => {
         >
           Workouts
         </button>
+
         <button
-          className={selectedSection === 'nutrition' ? 'active' : ''}
-          onClick={() => handleSectionChange('nutrition')}
+          className={selectedSection === 'foods' ? 'active' : ''}
+          onClick={() => handleSectionChange('foods')}
           style={{
             fontSize: '18px',
             padding: '10px 20px',
             borderRadius: '5px',
             backgroundColor: selectedSection === 'nutrition' ? 'lightblue' : 'transparent',
-            color: selectedSection === 'nutrition' ? 'black' : 'grey',
+            color: selectedSection === 'foods' ? 'black' : 'grey',
             border: '2px solid black',
             marginRight: '10px'
           }}
         >
           Nutrition
         </button>
+
         <button
           className={selectedSection === 'songs' ? 'active' : ''}
           onClick={() => handleSectionChange('songs')}
@@ -61,6 +71,7 @@ const Favorites = () => {
     </div>
 
     {selectedSection === 'workouts' && <FavoriteWorkouts />}
+    {selectedSection === 'foods' && <FavoriteFoods />}
     {/* Add conditional rendering for other sections */}
   </div>
 );

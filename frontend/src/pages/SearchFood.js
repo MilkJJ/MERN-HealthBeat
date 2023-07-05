@@ -111,14 +111,14 @@ const SearchFood = () => {
 
 
             {searchResults.length > 0 && (
-  <div className="search-results">
-    {searchResults.map((result) => (
-      <Link to={`/food/${result.idMeal}`} key={result.idMeal} className="search-result-card">
-        {result.strMeal}
-      </Link>
-    ))}
-  </div>
-)}
+              <div className="search-results">
+                {searchResults.map((result) => (
+                  <Link to={`/food/${result.idMeal}`} key={result.idMeal} className="search-result-card">
+                    {result.strMeal}
+                  </Link>
+                ))}
+              </div>
+            )}
 
 
 
